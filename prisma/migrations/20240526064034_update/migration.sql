@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Claim" ALTER COLUMN "lostDate" SET DATA TYPE TEXT;
