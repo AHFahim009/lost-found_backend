@@ -113,6 +113,8 @@ const deleteFoundItem = async (id: string) => {
 }
 
 const updateSingleFoundItem = async (id: string, payload: any) => {
+  console.log("frontend", { id, payload });
+
   const result = await prisma.foundItem.update({
     where: {
       id: id

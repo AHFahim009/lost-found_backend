@@ -5,20 +5,32 @@ import validationGuard from "../../middlewares/validationGuard";
 import { lostItemValidation } from "./lostItemValidation";
 
 const router = Router();
-router.post("/create-lost-item",
+router.post(
+  "/create-lost-item",
   authGuard("USER"),
   validationGuard(lostItemValidation.createSchema),
-  LostItemControllers.lostItemCreate);
+  LostItemControllers.lostItemCreate
+);
 
-router.get("/get-lost-items", LostItemControllers.getAllLostItem)
+router.get("/get-lost-items", LostItemControllers.getAllLostItem);
 
-router.get("/single-lost-item/:id", authGuard("USER"), LostItemControllers.getSingleLostItem)
-
-router.delete("/single-delete-lost-item/:id", authGuard("USER"), LostItemControllers.deleteSingleLostItem)
-
-router.patch("/single-update-item/:id",
+router.get(
+  "/single-lost-item/:id",
   authGuard("USER"),
-  validationGuard(lostItemValidation.updateSchema),
-  LostItemControllers.updateSingleLostItem)
+  LostItemControllers.getSingleLostItem
+);
+
+router.delete(
+  "/single-delete-lost-item/:id",
+  authGuard("USER"),
+  LostItemControllers.deleteSingleLostItem
+);
+
+router.patch(
+  "/single-update-lost-item/:id",
+  authGuard("USER"),
+
+  LostItemControllers.updateSingleLostItem
+);
 
 export const LostItemRoutes = router;

@@ -12,6 +12,12 @@ router.post(
   FoundItemControllers.createFoundItem
 );
 
+router.patch(
+  "/single-update-found-item/:id",
+  authGuard("USER"),
+
+  FoundItemControllers.updateSingleLostItem
+);
 router.get("/found-items", FoundItemControllers.getAllFoundItem);
 router.get("/admin-found-items", FoundItemControllers.adminAllFoundItem);
 
@@ -25,13 +31,6 @@ router.delete(
   "/single-delete-found-item/:id",
   authGuard("USER"),
   FoundItemControllers.deleteFoundLostItem
-);
-
-router.patch(
-  "/single-update-found-item/:id",
-  authGuard("USER"),
-  validationGuard(foundItemValidation.updateSchema),
-  FoundItemControllers.updateSingleLostItem
 );
 
 export const FoundItemRoutes = router;

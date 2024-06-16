@@ -58,6 +58,9 @@ const deleteSingleLostItem = asyncHandler(async (req, res) => {
 
 const updateSingleLostItem = asyncHandler(async (req, res) => {
   const { id } = req.params;
+  // data
+  console.log(req.body);
+
 
   const result = await LostItemServices.updateSingleLostItem(id, req.body);
 
